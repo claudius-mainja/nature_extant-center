@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth md:scroll-auto">
+  <head>
+    <!--  meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="nATURE Extant Learning Center" content="We are a a dedicated educational institute mandated to empowering the next generation of animal law advocates.">
+  
+  <!-- Open Graph tags for social sharing -->
+  <meta property="og:title" content="Nature Extant Learning Center">
+  <meta property="og:description" content=" We are a dedicated educational institute mandated to empowering the next generation of animal law advocates.">
+  <meta property="og:image" content="assets/icon-01.svg">
+    <title>      Nature Extant Learning Center </title>
+    <link rel="icon" type="image/x-icon" href="/assets/icon-01.svg" >
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"
+      integrity="sha512-nIwdJlD5/vHj23CbO2iHCXtsqzdTTx3e3uAmpTm4x2Y8xCIFyWu4cSIV8GaGe2UNVq86/1h9EgUZy7tn243qdA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+     <!-- Tailwind and External Resources -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/intake.css">
+    <link rel="stylesheet" href="/src/footer.css">
+
+     <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-10px) rotate(2deg)' },
+                            '66%': { transform: 'translateY(5px) rotate(-1deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+  </head>
+
+ <!---Author: Claudius Mainja-->
+
+        <!-- Modern Navbar -->
+    <header class="fixed w-full z-50" x-data="{ open: false, dropdown: false }">
+      <nav class="bg-white/90 backdrop-blur-md shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex justify-between h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <img src="/assets/images/Transparent logos-02.png" alt="Nature Extant" class="h-16 w-auto"/>
+            </div>
+  
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="/index.html" class="text-teal-900 hover:text-green-500 transition-colors">Home</a>
+              <a href="/pages/About.html" class="text-teal-900 hover:text-green-500 transition-colors">About</a>
+              
+              <!-- Programs Dropdown -->
+              <div class="relative" @click.away="dropdown = false">
+                <button @click="dropdown = !dropdown" class="text-teal-900 hover:text-green-500 transition-colors flex items-center">
+                  Programs
+                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+                
+                <div x-show="dropdown" 
+                     class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl py-2 z-50"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 transform -translate-y-2"
+                     x-transition:enter-end="opacity-100 transform translate-y-0">
+                  <a href="/pages/environmental education.html" class="block px-4 py-2 text-teal-900 hover:bg-green-50">Environmental Education</a>
+                  <a href="/pages/animal law advocacy.html" class="block px-4 py-2 text-teal-900 hover:bg-green-50">Animal Law</a>
+                </div>
+              </div>
+              
+              <a href="/pages/students.html" class="text-teal-900 hover:text-green-500 transition-colors">Students</a>
+              <a href="/pages/resources.html" class="text-teal-900 hover:text-green-500 transition-colors">Resources</a>
+              <a href="/pages/Registration.html" class="bg-teal-900 text-white px-6 py-2 rounded-full hover:bg-green-500 transition-colors">Register</a>
+            </div>
+  
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+              <button @click="open = !open" class="text-teal-900">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path :class="{'hidden': open, 'inline-flex': !open }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                  <path :class="{'hidden': !open, 'inline-flex': open }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Mobile Menu -->
+        <div :class="{'block': open, 'hidden': !open}" class="md:hidden bg-white">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="/index.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50 rounded-md">Home</a>
+            <a href="/pages/About.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50 rounded-md">About</a>
+            <div x-data="{ programsOpen: false }">
+              <button @click="programsOpen = !programsOpen" class="w-full text-left px-3 py-2 text-teal-900 hover:bg-green-50 rounded-md">
+                Programs
+                <svg class="inline-block ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div x-show="programsOpen" class="pl-6">
+                <a href="/pages/environmental education.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50">Environmental Education</a>
+                <a href="/pages/animal law advocacy.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50">Animal Advocacy</a>
+              </div>
+            </div>
+            <a href="/pages/students.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50 rounded-md">Students</a>
+            <a href="/pages/resources.html" class="block px-3 py-2 text-teal-900 hover:bg-green-50 rounded-md">Resources</a>
+            <a href="/pages/Registration.html" class="block px-3 py-2 bg-teal-900 text-white rounded-md text-center">Register</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <body
+    class="montserrat bg-slate-150 dark:bg-gradient-to-br from-green-800 to-blue-900 dark:text-white text-teal-900"
+  >
+    <!-- Hero Section -->
+  
+      <section class="relative min-h-screen bg-gradient-to-br from-green-800 to-blue-900 flex items-center pt-16">
+          <!-- Background effects -->
+          <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,128,0.1)_0%,rgba(0,0,255,0.1)_100%)] animate-pulse"></div>
+          
+          <!-- Background image -->
+          <div class="absolute inset-0 transform hover:scale-105 transition-transform duration-1000">
+              <img 
+                  src="/assets/images/Herobg.png" 
+                  alt="Environmental Education Background" 
+                  class="w-full h-full object-cover opacity-30"
+                  loading="eager"
+              >
+          </div>
+          
+          <!-- Floating elements -->
+          <div class="absolute inset-0 overflow-hidden">
+              <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-white rounded-full opacity-20 animate-float"></div>
+              <div class="absolute top-1/3 right-1/3 w-6 h-6 bg-green-400 rounded-full opacity-20 animate-float"></div>
+              <div class="absolute bottom-1/4 left-1/2 w-3 h-3 bg-blue-400 rounded-full opacity-20 animate-float"></div>
+          </div>
+          
+          <!-- Content -->
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div class="max-w-5xl mx-auto lg:mx-0 text-center lg:text-left">
+                  <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight uppercase mb-6 animate-fade-in-up">
+                      <span class="text-white">
+                          Empowering Environmental Leaders of Tomorrow
+                      </span>
+                  </h1>
+                  
+                  <p class="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 animate-fade-in-up-delayed">
+                      Join our community of passionate experts and shape the future of environmental education and animal law advocacy.
+                  </p>
+                  
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up-delayed">
+                      <a href="/pages/Registration.html" target="_blank"
+                         class="inline-block bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-lg 
+                                hover:bg-green-400 transition-all transform hover:scale-105 hover:shadow-lg 
+                                focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                          Register Now
+                      </a>
+                      
+                      <a href="/pages/About.html" target="_blank"
+                         class="inline-block bg-transparent border-2 border-white text-white font-bold px-8 py-4 
+                                rounded-full text-lg hover:bg-white hover:text-green-800 transition-all transform 
+                                hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white 
+                                focus:ring-offset-2">
+                          Who We Are
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+  <!-- Preload important assets -->
+  <link rel="preload" as="image" href="/assets/images/Transparent logos-02.png">
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center fade-in">
+        <h2 class="text-4xl font-bold text-teal-900 mb-8">Who We Are</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-12">
+          We are an Environmental Learning Centre, a dedicated facility promoting environmental awareness, education, and sustainable practices. We target schools, professionals, and communities in fragile settings to address critical environmental challenges. Through modern professional training programs and hands-on activities, we empower individuals with the knowledge and skills needed to protect our environment.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div class="p-6 rounded-xl bg-green-50 hover:shadow-lg transition-all">
+            <h3 class="text-xl font-bold text-teal-900 mb-4">Our Mission</h3>
+            <p class="text-gray-700">Empowering individuals through education to become effective environmental stewards</p>
+          </div>
+          <div class="p-6 rounded-xl bg-green-50 hover:shadow-lg transition-all">
+            <h3 class="text-xl font-bold text-teal-900 mb-4">Our Impact</h3>
+            <p class="text-gray-700">Aligning with SDGs to create meaningful environmental change</p>
+          </div>
+          <div class="p-6 rounded-xl bg-green-50 hover:shadow-lg transition-all">
+            <h3 class="text-xl font-bold text-teal-900 mb-4">Our Approach</h3>
+            <p class="text-gray-700">Combining theoretical knowledge with practical, hands-on experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-teal-900 mb-16">Our Programs</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Environmental Education Programs -->
+        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+          <img src="/assets/images/Environmetal-education.png" alt="Environmental Education" class="w-full h-64 object-cover"/>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-teal-900 mb-4">Environmental Education</h3>
+            <p class="text-gray-700 mb-6">Comprehensive programs focusing on sustainability, conservation, and environmental management.</p>
+            <a href="/pages/environmental education.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Animal Law Programs -->
+        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+          <img src="/assets/images/animal-law.png" alt="Animal Law" class="w-full h-64 object-cover"/>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-teal-900 mb-4">Animal Law</h3>
+            <p class="text-gray-700 mb-6">Specialized courses in animal welfare, wildlife protection, and environmental law.</p>
+            <a href="/pages/animal law advocacy.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--2026 Intake Calendar-->
+  <section class="font-montserrat bg-gradient-to-br from-green-50 to-orange-50">
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="absolute top-20 left-10 w-20 h-20 bg-green-200 rounded-full opacity-30 animate-float"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-orange-200 rounded-full opacity-40 animate-bounce-gentle" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-40 left-1/4 w-12 h-12 bg-green-300 rounded-full opacity-25 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 right-1/3 w-24 h-24 bg-orange-300 rounded-full opacity-20 animate-bounce-gentle" style="animation-delay: 0.5s;"></div>
+    </div>
+
+    <section class="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <!-- Header Section -->
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <div>
+                <h1 class="text-4xl lg:text-4xl font-bold text-teal-900 uppercase mb-6 animate-pulse-slow">
+                    2026 Intakes
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-green-500 to-orange-500 mx-auto mb-8 animate-shimmer shimmer-effect"></div>
+                <p class="text-md  text-gray-700 font-medium max-w-3xl mx-auto leading-relaxed">
+                    Advance your career with our specialized programs in wildlife conservation, environmental law, and sustainable practices
+                </p>
+            </div>
+        </div>
+
+        <!-- Registration Deadlines Alert -->
+        <div class="max-w-4xl mx-auto mb-16 animate-fade-in-up opacity-0" style="animation-delay: 0.4s;">
+            <div class="glass-effect rounded-2xl p-6 border-2 border-green-200 shadow-2xl">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-3"></div>
+                    <h3 class="text-2xl font-bold text-gray-800">Registration Deadlines</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/50 rounded-xl p-4 border border-green-100">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-green-700 mb-2">FEBRUARY 2026 INTAKE</div>
+                            <div class="text-3xl font-black text-orange-600">7 JANUARY 2026</div>
+                        </div>
+                    </div>
+                    <div class="bg-white/50 rounded-xl p-4 border border-orange-100">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-orange-700 mb-2">AUGUST 2026 INTAKE</div>
+                            <div class="text-3xl font-black text-orange-600">7 JULY 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Programs Grid -->
+        <div class="max-w-7xl mx-auto">
+            <!-- Top Row - 3 Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8" id="programs-grid-top">
+                <!-- Wildlife Law & Policy -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 0.6s;">
+                    <div class="gradient-bg p-6 text-white relative">
+                        <h3 class="text-2xl font-bold mb-2">Wildlife Law & Policy</h3>
+                        <div class="flex items-center text-green-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">HYBRID-Learning</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Duration:</span>
+                            <span class="font-bold text-green-700">18 Months</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Exam Board:</span>
+                            <span class="font-bold text-gray-800">HEXCO – ND</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Intakes:</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-black text-green-600 mb-2">$500</div>
+                                <div class="text-gray-500 text-sm">PER SEMESTER</div>
+                            </div>
+                        </div>
+                        <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-800 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Human Wildlife Conflict -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 0.8s;">
+                    <div class="gradient-bg p-6 text-white relative">
+                        <h3 class="text-2xl font-bold mb-2">Human Wildlife Conflict</h3>
+                        <div class="flex items-center text-green-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">HYBRID-Learning</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Duration:</span>
+                            <span class="font-bold text-green-700">3 Months</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Exam Board:</span>
+                            <span class="font-bold text-gray-800">HEXCO-PCC</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Certificate:</span>
+                            <span class="font-bold text-orange-600 text-sm">Professional Competence</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Intakes:</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-black text-green-600 mb-2">$500</div>
+                                <div class="text-gray-500 text-sm">TOTAL FEE</div>
+                            </div>
+                        </div>
+                         <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-800 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Animal Law & Welfare -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 1s;">
+                    <div class="gradient-bg p-6 text-white relative">
+                        <h3 class="text-2xl font-bold mb-2">Animal Law & Welfare</h3>
+                        <div class="flex items-center text-green-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">HYBRID-Learning</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Duration:</span>
+                            <span class="font-bold text-green-700">12 Months</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Exam Board:</span>
+                            <span class="font-bold text-gray-800">HEXCO – ND</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium">Intakes:</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-black text-green-600 mb-2">$500</div>
+                                <div class="text-gray-500 text-sm">PER SEMESTER</div>
+                            </div>
+                        </div>
+                         <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-800 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row - 4 Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="programs-grid-bottom">
+                <!-- Environmental Law & Climate Change -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 1.2s;">
+                    <div class="gradient-bg p-6 text-white relative">
+                        <h3 class="text-xl font-bold mb-2">Environmental Law & Climate Change</h3>
+                        <div class="flex items-center text-green-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">HYBRID-Learning</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Duration:</span>
+                            <span class="font-bold text-green-700">3 Months</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Exam Board:</span>
+                            <span class="font-bold text-gray-800 text-sm">HEXCO-PCC</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Certificate:</span>
+                            <span class="font-bold text-orange-600 text-xs">Professional Competence</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Intakes:</span>
+                            <div class="flex space-x-1">
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-green-600 mb-1">$500</div>
+                                <div class="text-gray-500 text-xs">TOTAL FEE</div>
+                            </div>
+                        </div>
+                        <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-800 hover:bg-green-600 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect text-sm">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                                <!-- ESG Program -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-teal-100 hover:border-teal-300 transition-all duration-300" style="animation-delay: 1.8s;">
+                    <div class="bg-teal-900 p-6 text-white relative">
+                        <h3 class="text-xl font-bold mb-2">ESG</h3>
+                        <div class="flex items-center text-teal-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">ONLINE</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Duration:</span>
+                            <span class="font-bold text-orange-700">4 Weeks</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Certificate:</span>
+                            <span class="font-bold text-gray-800 text-sm">NELC Certificate</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Intakes:</span>
+                            <div class="flex space-x-1">
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-orange-600 mb-1">$400</div>
+                                <div class="text-gray-500 text-xs">TOTAL FEE</div>
+                            </div>
+                        </div>
+                        <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-900 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect text-sm">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tourism Governance & Compliance -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 1.4s;">
+                    <div class="bg-teal-900 p-6 text-white relative">
+                        <h3 class="text-xl font-bold mb-2">Tourism Governance & Compliance</h3>
+                        <div class="flex items-center text-orange-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">ONLINE</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Duration:</span>
+                            <span class="font-bold text-orange-700">4 Weeks</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Certificate:</span>
+                            <span class="font-bold text-gray-800 text-sm">NELC Certificate</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Intakes:</span>
+                            <div class="flex space-x-1">
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">MAR</span>
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">OCT</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-orange-600 mb-1">$200</div>
+                                <div class="text-gray-500 text-xs">TOTAL FEE</div>
+                            </div>
+                        </div>
+                        <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-900 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect text-sm">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Wildlife Law Enforcement -->
+                <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 1.6s;">
+                    <div class="gradient-bg p-6 text-white relative">
+                        <h3 class="text-xl font-bold mb-2">Wildlife Law Enforcement</h3>
+                        <div class="flex items-center text-green-100">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">ONLINE</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Duration:</span>
+                            <span class="font-bold text-green-700">4 Weeks</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Certificate:</span>
+                            <span class="font-bold text-gray-800 text-sm">NELC Certificate</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600 font-medium text-sm">Intakes:</span>
+                            <div class="flex space-x-1">
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">FEB</span>
+                                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-bold">AUG</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-green-600 mb-1">$150</div>
+                                <div class="text-gray-500 text-xs">TOTAL FEE</div>
+                            </div>
+                        </div>
+                        <a href="mailto:info.nelcentre@gmail.com" target="_blank">
+                        <button class="w-full bg-teal-900 hover:bg-green-600 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shimmer-effect text-sm">
+                            REGISTER NOW
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div> ND</span>
+                        </div>
+                </div>
+
+            </div>
+
+  </section>
+  <script src="/scripts/intke.js"></script>
+
+  <!-- Student Stories Section -->
+  <section id="students" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-teal-900 mb-16">Our Student Stories</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div x-data="{ current: 0 }" class="relative">
+          <!-- Testimonial Cards -->
+          <div class="space-y-8">
+            <template x-for="(testimonial, index) in [
+              {
+                name: 'Caroline Washaya-Moyo',
+                role: 'Journalist',
+                image: '/assets/images/students/Caroline Washaya.jpg',
+                quote: 'I took the program because having worked for Zimbabwe Parks and Wildlife Management Authority as a Public Relations Manager for 8 years, I have the knowledge but no paper to show for it.'
+              },
+              {
+                name: 'Kuvarega Manyonga',
+                role: 'Security Officer',
+                image: '/assets/images/students/Kuvarega Munyonga.png',
+                quote: 'I took a lifetime learning decision to pursue the wildlife law studies offered by Nature Extant learning Centre because my role in the multi billion dollar wildlife industry will NEVER be the same.'
+              }
+            ]" :key="index">
+              <div x-show="current === index" 
+              class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0">
+                <div class="flex items-center mb-6">
+                  <img :src="testimonial.image" :alt="testimonial.name" class="w-20 h-20 rounded-full object-cover mr-4"/>
+                  <div>
+                    <h3 class="text-xl font-bold text-teal-900" x-text="testimonial.name"></h3>
+                    <p class="text-gray-600" x-text="testimonial.role"></p>
+                  </div>
+                </div>
+                <p class="text-gray-700 italic" x-text="testimonial.quote"></p>
+              </div>
+            </template>
+            
+            <!-- Navigation Dots -->
+            <div class="flex justify-center space-x-2 mt-6">
+              <button @click="current = 0" :class="{'bg-teal-900': current === 0, 'bg-gray-300': current !== 0}" class="w-3 h-3 rounded-full transition-colors"></button>
+              <button @click="current = 1" :class="{'bg-teal-900': current === 1, 'bg-gray-300': current !== 1}" class="w-3 h-3 rounded-full transition-colors"></button>
+            </div>
+          </div>
+        </div>
+
+        <div x-data="{ current: 0 }" class="relative">
+          <!-- Second Set of Testimonials -->
+          <div class="space-y-8">
+            <template x-for="(testimonial, index) in [
+              {
+                name: 'Phonos Nyakudya',
+                role: 'SOFA Legal Officer',
+                image: '/assets/images/students/Phonos Nyakudya.png',
+                quote: 'It has motivated me to pursue animal law with ardent zeal. The curriculum package is rich in legal education, equipping one with knowledge and skills enough to advocate for animal welfare and conservation.'
+              },
+              {
+                name: 'Rumbidzai Takawira',
+                role: 'Journalist (conservation conversation)',
+                image: '/assets/images/students/rumbidzai takawira.png',
+                quote: 'This diploma has elevated my journalism, empowering me to drive meaningful conversations and advocate for effective wildlife conservation practices.'
+              }
+            ]" :key="index">
+              <div x-show="current === index" 
+                class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0">
+                <div class="flex items-center mb-6">
+                  <img :src="testimonial.image" :alt="testimonial.name" class="w-20 h-20 rounded-full object-cover mr-4"/>
+                  <div>
+                    <h3 class="text-xl font-bold text-teal-900" x-text="testimonial.name"></h3>
+                    <p class="text-gray-600" x-text="testimonial.role"></p>
+                  </div>
+                </div>
+                <p class="text-gray-700 italic" x-text="testimonial.quote"></p>
+              </div>
+            </template>
+            
+            <!-- Navigation Dots -->
+            <div class="flex justify-center space-x-2 mt-6">
+              <button @click="current = 0" :class="{'bg-teal-900': current === 0, 'bg-gray-300': current !== 0}" class="w-3 h-3 rounded-full transition-colors"></button>
+              <button @click="current = 1" :class="{'bg-teal-900': current === 1, 'bg-gray-300': current !== 1}" class="w-3 h-3 rounded-full transition-colors"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-24 bg-gradient-to-br from-green-800 to-blue-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-white mb-8">Ready to Make a Difference?</h2>
+        <p class="text-xl text-white/90 mb-12">Join our next cohort and start your journey in environmental education and animal law advocacy.</p>
+        <a href="mailto:info@natureextant.com" target="_blank" class="inline-block bg-white text-teal-900 font-bold px-8 py-4 rounded-full text-lg hover:bg-green-400 hover:text-white transition-all transform hover:scale-105">
+          Register Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+<!-- Footer Container -->
+<footer class="bg-gradient-to-b from-teal-900 to-teal-950 text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12 footer-content">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Logo Section -->
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center space-x-3 group cursor-pointer">
+          <div class="w-48 h-48 bg-white rounded overflow-hidden transform transition-transform group-hover:scale-110">
+            <img 
+              src="assets/images/Transparent logos-02.png" 
+              alt="Nature Extant Logo" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="transform hover:-translate-y-1 transition-transform duration-300">
+        <h3 class="text-lg  mb-4 text-white">About Us</h3>
+        <p class="text-md hover:text-white transition-colors">
+          We are a dedicated educational institute mandated to empowering the next generation of animal law advocates and effective environmental stewards
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+        <ul class="space-y-2 text-md">
+          <li>
+            <a href="mailto:info@natureextant.com" target="_blank" class="quick-link hover:text-white transition-colors">Careers</a>
+          </li>
+          <li>
+            <a href="/pages/About.html" class="quick-link hover:text-white transition-colors">About</a>
+          </li>
+          <li>
+            <a href="/pages/programs.html" class="quick-link hover:text-white transition-colors">Our Modules</a>
+          </li>
+          <li>
+            <a href="students.html" class="quick-link hover:text-white transition-colors">Our Student Stories</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Details -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4 text-white">Contact Us</h3>
+        <div class="space-y-4 text-md">
+          <div class="contact-item flex items-center space-x-2 hover:text-white cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <div>
+              <p>+263 783 656 802</p>
+              <p>+263 864 425 2865</p>
+            </div>
+          </div>
+          <div class="contact-item flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href="mailto:info@natureextant.com" target="_blank" class="hover:text-white transition-colors">
+             info.nelcentre@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright and Social Links -->
+    <div class="mt-12 pt-8 border-t border-teal-800">
+      <div class="flex flex-col sm:flex-row justify-between items-center text-md text-white">
+        <p class="hover:text-white transition-colors cursor-pointer">© 2025 Nature Extant Learning Center</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+          <!-- Facebook Icon -->
+          <a href="https://www.facebook.com/profile.php?id=61568998945243" target="_blank" class="social-icon hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+          </a>
+
+          <!-- Instagram Icon -->
+          <a href="https://www.facebook.com/profile.php?id=61568998945243" target="_blank" class="social-icon hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <!-- LinkedIn Icon -->
+          <a href="https://www.linkedin.com/company/105676539/admin/dashboard/" target="_blank" class="social-icon hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: '#ffffff'
+        },
+        opacity: {
+          value: 0.5,
+          random: false
+        },
+        size: {
+          value: 3,
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#ffffff',
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'grab'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</html>
