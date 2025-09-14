@@ -229,11 +229,11 @@
   <link rel="preload" as="image" href="/assets/images/Transparent logos-02.png">
 
   <!-- About Section -->
-  <section id="about" class="py-24 bg-white">
+  <section id="about" class="py-24 bg-teal-900">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto text-center fade-in">
-        <h2 class="text-4xl font-bold text-teal-900 mb-8">Who We Are</h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-12">
+        <h2 class="text-4xl font-bold text-white mb-8">Who We Are</h2>
+        <p class="text-lg text-gray-300 leading-relaxed mb-12">
           We are an Environmental Learning Centre, a dedicated facility promoting environmental awareness, education, and sustainable practices. We target schools, professionals, and communities in fragile settings to address critical environmental challenges. Through modern professional training programs and hands-on activities, we empower individuals with the knowledge and skills needed to protect our environment.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -254,41 +254,9 @@
     </div>
   </section>
 
-  <!-- Programs Section -->
-  <section id="programs" class="py-24 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-teal-900 mb-16">Our Programs</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-        <!-- Environmental Education Programs -->
-        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
-          <img src="/assets/images/Environmetal-education.png" alt="Environmental Education" class="w-full h-64 object-cover"/>
-          <div class="p-8">
-            <h3 class="text-2xl font-bold text-teal-900 mb-4">Environmental Education</h3>
-            <p class="text-gray-700 mb-6">Comprehensive programs focusing on sustainability, conservation, and environmental management.</p>
-            <a href="/pages/environmental education.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
-              Learn More
-            </a>
-          </div>
-        </div>
-
-        <!-- Animal Law Programs -->
-        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
-          <img src="/assets/images/animal-law.png" alt="Animal Law" class="w-full h-64 object-cover"/>
-          <div class="p-8">
-            <h3 class="text-2xl font-bold text-teal-900 mb-4">Animal Law</h3>
-            <p class="text-gray-700 mb-6">Specialized courses in animal welfare, wildlife protection, and environmental law.</p>
-            <a href="/pages/animal law advocacy.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
-              Learn More
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!--2026 Intake Calendar-->
-  <section class="font-montserrat bg-gradient-to-br from-green-50 to-orange-50">
+  <section class="bg-gradient-to-br from-green-50 to-orange-50">
     <!-- Floating Background Elements -->
     <div class="floating-elements">
         <div class="absolute top-20 left-10 w-20 h-20 bg-green-200 rounded-full opacity-30 animate-float"></div>
@@ -300,9 +268,9 @@
     <section class="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <!-- Header Section -->
         <div class="max-w-7xl mx-auto text-center mb-16">
-            <div>
-                <h1 class="text-4xl lg:text-4xl font-bold text-teal-900 uppercase mb-6 animate-pulse-slow">
-                    2026 Intakes
+            <div class="animate-fade-in-up opacity-1" style="animation-delay: 0.2s;">
+                <h1 class="text-4xl lg:text-4xl font-bold text-teal-900 uppercase mb-6 ">
+                    2026 Admissions.
                 </h1>
                 <div class="w-32 h-1 bg-gradient-to-r from-green-500 to-orange-500 mx-auto mb-8 animate-shimmer shimmer-effect"></div>
                 <p class="text-md  text-gray-700 font-medium max-w-3xl mx-auto leading-relaxed">
@@ -458,7 +426,7 @@
                 </div>
             </div>
 
-            <!-- Bottom Row - 4 Columns -->
+            <!-- Bottom Row -  with 4 Columns to fit all the courses  -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="programs-grid-bottom">
                 <!-- Environmental Law & Climate Change -->
                 <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-100 hover:border-green-300 transition-all duration-300" style="animation-delay: 1.2s;">
@@ -502,7 +470,7 @@
                     </div>
                 </div>
 
-                                <!-- ESG Program -->
+         <!-- ESG Program -->
                 <div class="program-card opacity-0 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-teal-100 hover:border-teal-300 transition-all duration-300" style="animation-delay: 1.8s;">
                     <div class="bg-teal-900 p-6 text-white relative">
                         <h3 class="text-xl font-bold mb-2">ESG</h3>
@@ -626,6 +594,41 @@
 
   </section>
   <script src="/scripts/intke.js"></script>
+
+
+  
+  <!-- Programs Section -->
+  <section id="programs" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-teal-900 mb-16">Our Programs</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Environmental Education Programs -->
+        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+          <img src="/assets/images/Environmetal-education.png" alt="Environmental Education" class="w-full h-64 object-cover"/>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-teal-900 mb-4">Environmental Education</h3>
+            <p class="text-gray-700 mb-6">Comprehensive programs focusing on sustainability, conservation, and environmental management.</p>
+            <a href="/pages/environmental education.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Animal Law Programs -->
+        <div class="program-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+          <img src="/assets/images/animal-law.png" alt="Animal Law" class="w-full h-64 object-cover"/>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-teal-900 mb-4">Animal Law</h3>
+            <p class="text-gray-700 mb-6">Specialized courses in animal welfare, wildlife protection, and environmental law.</p>
+            <a href="/pages/animal law advocacy.html" class="inline-block bg-teal-900 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Student Stories Section -->
   <section id="students" class="py-24 bg-white">
