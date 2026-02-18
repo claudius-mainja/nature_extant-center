@@ -3,13 +3,63 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programs - Nature Extant Learning Center</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Programs | Nature Extant Academy - Wildlife Law & Environmental Courses Zimbabwe & SADC</title>
+    <meta name="title" content="Programs | Nature Extant Academy - Wildlife Law & Environmental Courses Zimbabwe & SADC">
+    <meta name="description" content="Explore HEXCO-certified programs at Nature Extant Academy: Wildlife Law & Policy, Animal Law & Welfare, Environmental Law, Human Wildlife Conflict courses. Study in Zimbabwe. Programs for SADC students.">
+    <meta name="keywords" content="wildlife law programs Zimbabwe, animal law courses Africa, environmental education SADC, HEXCO certified programs, wildlife policy diploma, animal welfare training, conservation courses Zimbabwe, ESG courses Africa, tourism governance training">
+    <meta name="author" content="Claudius Mainja - Brand Designer & Web Developer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://natureextantcentre.org/pages/programs.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://natureextantcentre.org/pages/programs.html">
+    <meta property="og:title" content="Programs | Nature Extant Academy - Wildlife Law & Environmental Courses">
+    <meta property="og:description" content="Explore our HEXCO-certified programs in Wildlife Law, Animal Welfare, Environmental Management. Join students from Zimbabwe and SADC countries.">
+    <meta property="og:image" content="https://natureextantcentre.org/assets/images/Transparent logos-02.png">
+    <meta property="og:locale" content="en_ZW">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Programs | Nature Extant Academy">
+    <meta name="twitter:description" content="HEXCO-certified wildlife law and environmental programs in Zimbabwe.">
+    
     <link rel="icon" type="image/x-icon" href="/assets/icon-01.svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="/src/modern.css">
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Nature Extant Academy",
+          "url": "https://natureextantcentre.org/",
+          "areaServed": ["Zimbabwe", "South Africa", "Botswana", "Namibia", "Zambia", "SADC"]
+        },
+        {
+          "@type": "ItemList",
+          "name": "Programs",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Wildlife Law & Policy", "url": "https://natureextantcentre.org/pages/programs.html#wildlife-law"},
+            {"@type": "ListItem", "position": 2, "name": "Human Wildlife Conflict", "url": "https://natureextantcentre.org/pages/programs.html#hwc"},
+            {"@type": "ListItem", "position": 3, "name": "Animal Law & Welfare", "url": "https://natureextantcentre.org/pages/programs.html#animal-law"},
+            {"@type": "ListItem", "position": 4, "name": "Environmental Law & Climate Change", "url": "https://natureextantcentre.org/pages/programs.html#environmental-law"},
+            {"@type": "ListItem", "position": 5, "name": "ESG", "url": "https://natureextantcentre.org/pages/programs.html#esg"},
+            {"@type": "ListItem", "position": 6, "name": "Wildlife Law Enforcement", "url": "https://natureextantcentre.org/pages/programs.html#enforcement"}
+          ]
+        }
+      ]
+    }
+    </script>
+    
     <style>
       @import "tailwindcss";
       :root { --primary: #0F3D3E; --secondary: #D4A84B; }
@@ -201,8 +251,60 @@
       </div>
     </section>
 
+    <!-- Frequently Asked Questions -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <span class="inline-block px-5 py-2 bg-[#D4A84B]/10 text-[#D4A84B] rounded-full text-sm font-bold tracking-wider mb-4">FAQ</span>
+          <h2 class="text-3xl lg:text-4xl font-black text-[#0F3D3E]">Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="space-y-4" x-data="{ active: null }">
+          <div class="border border-gray-200 rounded-2xl overflow-hidden">
+            <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50">
+              <span class="font-bold text-[#0F3D3E]">What is HEXCO certification?</span>
+              <i class="fas text-[#D4A84B]" :class="active === 1 ? 'fa-minus' : 'fa-plus'"></i>
+            </button>
+            <div x-show="active === 1" class="px-6 py-5 bg-white">
+              <p class="text-gray-600">HEXCO (Higher Education Examinations Council) is Zimbabwe's recognized examination board for vocational education and training. HEXCO certification is recognized throughout Zimbabwe and the SADC region.</p>
+            </div>
+          </div>
+          
+          <div class="border border-gray-200 rounded-2xl overflow-hidden">
+            <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50">
+              <span class="font-bold text-[#0F3D3E]">Can I study if I'm from another SADC country?</span>
+              <i class="fas text-[#D4A84B]" :class="active === 2 ? 'fa-minus' : 'fa-plus'"></i>
+            </button>
+            <div x-show="active === 2" class="px-6 py-5 bg-white">
+              <p class="text-gray-600">Yes! We welcome students from all SADC countries including South Africa, Botswana, Namibia, Zambia, Mozambique, and more. We assist with visa arrangements and accommodation.</p>
+            </div>
+          </div>
+          
+          <div class="border border-gray-200 rounded-2xl overflow-hidden">
+            <button @click="active = (active === 3 ? null : 3)" class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50">
+              <span class="font-bold text-[#0F3D3E]">What are the career opportunities after graduation?</span>
+              <i class="fas text-[#D4A84B]" :class="active === 3 ? 'fa-minus' : 'fa-plus'"></i>
+            </button>
+            <div x-show="active === 3" class="px-6 py-5 bg-white">
+              <p class="text-gray-600">Graduates work as Wildlife Law Enforcement Officers, Environmental Consultants, Animal Welfare Advocates, Conservation Managers, Policy Analysts, ESG Specialists, and Tourism Compliance Officers across Africa.</p>
+            </div>
+          </div>
+          
+          <div class="border border-gray-200 rounded-2xl overflow-hidden">
+            <button @click="active = (active === 4 ? null : 4)" class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50">
+              <span class="font-bold text-[#0F3D3E]">How do I apply?</span>
+              <i class="fas text-[#D4A84B]" :class="active === 4 ? 'fa-minus' : 'fa-plus'"></i>
+            </button>
+            <div x-show="active === 4" class="px-6 py-5 bg-white">
+              <p class="text-gray-600">Download the admission form from our website or contact us directly. Deadlines: February 2026 intake (January 7, 2026), August 2026 intake (July 7, 2026).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-[#0A2E2E] via-[#0F3D3E] to-[#0A2E2E] text-white">
+    <footer class="bg-gradient-to-b from-[#0A2E2E] via-[#0F3D3E] to-[#0A2E2E] text-white pb-24 lg:pb-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
           <div class="lg:col-span-1">
@@ -219,7 +321,10 @@
           <div><h4 class="text-lg font-bold mb-6 text-[#D4A84B]">Contact Us</h4><ul class="space-y-4"><li class="flex items-start"><i class="fas fa-phone text-[#D4A84B] mt-1 mr-3"></i><div><p class="text-gray-400">+263 864 425 2865</p><p class="text-gray-400">+263 783 656 802</p><p class="text-gray-400">+263 772 585 100</p></div></li><li class="flex items-center"><i class="fas fa-envelope text-[#D4A84B] mr-3"></i><a href="mailto:info.nelcentre@gmail.com" class="text-gray-400 hover:text-white transition-colors">info.nelcentre@gmail.com</a></li><li class="flex items-start"><i class="fas fa-map-marker-alt text-[#D4A84B] mt-1 mr-3"></i><p class="text-gray-400">Zimbabwe</p></li></ul></div>
         </div>
         <div class="pt-8 border-t border-gray-700">
-          <div class="flex flex-col md:flex-row justify-between items-center"><p class="text-gray-500 text-sm">© 2026 Nature Extant Learning Center. All rights reserved.</p><div class="flex space-x-6 mt-4 md:mt-0"><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a></div></div>
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm">© 2026 Nature Extant Academy. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0"><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a></div>
+          </div>
         </div>
       </div>
     </footer>
