@@ -1,9 +1,14 @@
+@import "tailwindcss";
 
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
 }
 
 .particles-js-canvas-el {
@@ -21,31 +26,31 @@ box-sizing: border-box;
 .glass-effect {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.1);
-  }
+}
   
-  .fade-in {
+.fade-in {
     animation: fadeIn 0.5s ease-in;
-  }
+}
   
-  @keyframes fadeIn {
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
+}
 
-  .slide-in {
+.slide-in {
     animation: slideIn 0.7s ease-out;
-  }
+}
 
-  @keyframes slideIn {
+@keyframes slideIn {
     from { transform: translateX(-100px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
-  }
+}
 
-  .program-card:hover {
+.program-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  }
-  @keyframes float {
+}
+@keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
