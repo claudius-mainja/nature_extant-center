@@ -486,7 +486,43 @@
     </style>
   </head>
 
-  <body class="font-sans antialiased" x-data="{ mobileMenu: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 50)">
+  <body class="font-sans antialiased" x-data="{ showPopup: true }" x-init="setTimeout(() => { showPopup = true }, 500)" x-cloak>
+    
+    <!-- Graduation Popup Modal -->
+    <div x-show="showPopup" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" style="display: none;">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="showPopup = false"></div>
+      
+      <!-- Modal Content -->
+      <div x-show="showPopup" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-auto">
+        <!-- Close Button -->
+        <button @click="showPopup = false" class="absolute top-4 right-4 z-10 w-10 h-10 bg-[#0F3D3E] text-white rounded-full flex items-center justify-center hover:bg-[#D4A84B] hover:text-[#0F3D3E] transition-all">
+          <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-[#0F3D3E] to-[#1A5F5F] px-8 py-6 text-center rounded-t-3xl">
+          <h2 class="text-2xl lg:text-3xl font-bold text-white">Graduation Ceremony 2026</h2>
+          <p class="text-white/80 mt-2">You're Invited!</p>
+        </div>
+        
+        <!-- PNG Image -->
+        <div class="p-6 bg-gray-50">
+          <img src="/assets/images/Invitation Card.png" alt="Graduation Invitation" class="w-full h-auto rounded-2xl shadow-lg">
+        </div>
+        
+        <!-- Footer Actions -->
+        <div class="px-8 py-6 bg-white flex flex-col sm:flex-row gap-4 justify-center rounded-b-3xl">
+          <a href="/assets/images/Invitation Card.png" download class="inline-flex items-center justify-center px-8 py-3 bg-[#D4A84B] text-[#0F3D3E] font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all">
+            <i class="fas fa-download mr-2"></i>Download Invitation
+          </a>
+          <a href="/pages/Registration.html" class="inline-flex items-center justify-center px-8 py-3 bg-[#0F3D3E] text-white font-bold rounded-full hover:bg-[#1A5F5F] transition-all">
+            <i class="fas fa-graduation-cap mr-2"></i>Register Now
+          </a>
+        </div>
+      </div>
+    </div>
+    <style>[x-cloak] { display: none !important; }</style>
     
     <!-- Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
@@ -625,21 +661,6 @@
                 </a>
               </div>
 
-              <!-- Stats -->
-              <div class="grid grid-cols-3 gap-8 mt-14 pt-10 border-t border-white/20">
-                <div class="stat-item text-center pr-6">
-                  <div class="text-4xl sm:text-5xl font-black text-white mb-2">500+</div>
-                  <div class="text-white/70 text-sm font-medium">Graduates</div>
-                </div>
-                <div class="stat-item text-center px-6">
-                  <div class="text-4xl sm:text-5xl font-black text-white mb-2">15+</div>
-                  <div class="text-white/70 text-sm font-medium">Programs</div>
-                </div>
-                <div class="text-center pl-6">
-                  <div class="text-4xl sm:text-5xl font-black text-white mb-2">95%</div>
-                  <div class="text-white/70 text-sm font-medium">Success Rate</div>
-                </div>
-              </div>
             </div>
 
             <!-- Hero Visual -->
@@ -723,16 +744,7 @@
               </div>
             </div>
             
-            <!-- Experience Badge -->
-            <div class="absolute -bottom-8 -right-8 bg-white rounded-3xl shadow-2xl p-8">
-              <div class="flex items-center space-x-5">
-                <div class="text-6xl font-black text-[#0F3D3E]">10+</div>
-                <div>
-                  <p class="text-gray-600 font-semibold">Years of</p>
-                  <p class="text-[#0F3D3E] font-bold text-lg">Excellence</p>
-                </div>
-              </div>
-            </div>
+
           </div>
           
           <div>
@@ -796,43 +808,69 @@
           </p>
         </div>
         
-        <!-- Programs Grid -->
+<!-- Programs Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Wildlife Law & Policy -->
-          <div class="program-card card-hover group">
-            <div class="relative h-56 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-[#0F3D3E] to-[#1A5F5F]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-balance-scale text-7xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
-              </div>
-              <div class="absolute top-5 right-5 px-4 py-1.5 bg-[#D4A84B] text-[#0F3D3E] text-xs font-bold rounded-full">POPULAR</div>
-            </div>
+          <!-- ESG Program - First (Highest Price) -->
+          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group relative">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-[#0F3D3E] mb-3">Wildlife Law & Policy</h3>
-              <p class="text-gray-600 text-sm mb-5">Comprehensive understanding of wildlife protection laws and policy frameworks.</p>
-              <div class="space-y-3 text-sm text-gray-500 mb-6">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2 text-[#0F3D3E]"></i>Duration:</span>
-                  <span class="font-bold text-[#0F3D3E]">18 Months</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-purple-500/30 text-purple-200 text-xs font-bold rounded-full">PREMIUM</span>
+                <span class="text-4xl font-black text-white">$1225</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">ESG</h3>
+              <p class="text-teal-200 text-sm mb-6 leading-relaxed">Environmental, Social, and Governance principles for professionals.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
+                  <span class="font-bold text-white">3 Months</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2 text-[#0F3D3E]"></i>Exam Board:</span>
-                  <span class="font-bold text-[#0F3D3E]">HEXCO – ND</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Certificate</span>
+                  <span class="font-bold text-white">HEXCO</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2 text-[#0F3D3E]"></i>Intakes:</span>
-                  <span class="flex space-x-2">
-                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-xs font-bold">AUG</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
+                  <span class="flex space-x-1">
+                    <span class="bg-purple-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">FEB</span>
+                    <span class="bg-purple-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">AUG</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-gray-200 pt-5 mb-5">
-                <div class="text-center">
-                  <div class="text-4xl font-black text-[#0F3D3E]">$500</div>
-                  <div class="text-gray-500 text-sm">PER SEMESTER</div>
+              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-center rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all">
+                REGISTER NOW
+              </a>
+            </div>
+          </div>
+
+          <!-- Wildlife Law & Policy -->
+          <div class="bg-white rounded-3xl overflow-hidden card-hover group relative shadow-xl">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#D4A84B] via-[#E8C97C] to-[#D4A84B]"></div>
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-[#D4A84B]/20 text-[#D4A84B] text-xs font-bold rounded-full">POPULAR</span>
+                <span class="text-4xl font-black text-[#0F3D3E]">$500</span>
+              </div>
+              <h3 class="text-2xl font-bold text-[#0F3D3E] mb-3">Wildlife Law & Policy</h3>
+              <p class="text-gray-600 text-sm mb-6 leading-relaxed">Comprehensive understanding of wildlife protection laws and policy frameworks.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
+                  <span class="font-bold text-[#0F3D3E]">18 Months</span>
+                </div>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Exam Board</span>
+                  <span class="font-bold text-[#0F3D3E]">HEXCO – ND</span>
+                </div>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
+                  <span class="flex space-x-1">
+                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
+                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
+                  </span>
                 </div>
               </div>
+              <div class="text-center text-gray-500 text-xs mb-4">Per Semester</div>
               <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-[#D4A84B] to-[#C49A40] text-[#0F3D3E] font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
@@ -840,244 +878,170 @@
           </div>
 
           <!-- Human Wildlife Conflict -->
-          <div class="program-card card-hover group">
-            <div class="relative h-56 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-hand-holding-heart text-7xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
-              </div>
-            </div>
+          <div class="bg-white rounded-3xl overflow-hidden card-hover group relative shadow-xl">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 via-teal-500 to-green-500"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-[#0F3D3E] mb-3">Human Wildlife Conflict</h3>
-              <p class="text-gray-600 text-sm mb-5">Learn strategies to manage and resolve human-wildlife conflicts sustainably.</p>
-              <div class="space-y-3 text-sm text-gray-500 mb-6">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2 text-[#0F3D3E]"></i>Duration:</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">CERTIFICATE</span>
+                <span class="text-4xl font-black text-[#0F3D3E]">$500</span>
+              </div>
+              <h3 class="text-2xl font-bold text-[#0F3D3E] mb-3">Human Wildlife Conflict</h3>
+              <p class="text-gray-600 text-sm mb-6 leading-relaxed">Learn strategies to manage and resolve human-wildlife conflicts sustainably.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
                   <span class="font-bold text-[#0F3D3E]">3 Months</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2 text-[#0F3D3E]"></i>Exam Board:</span>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Exam Board</span>
                   <span class="font-bold text-[#0F3D3E]">HEXCO-PCC</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-award mr-2 text-[#0F3D3E]"></i>Certificate:</span>
-                  <span class="font-bold text-orange-500">Professional Competence</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2 text-[#0F3D3E]"></i>Intakes:</span>
-                  <span class="flex space-x-2">
-                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-xs font-bold">AUG</span>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
+                  <span class="flex space-x-1">
+                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
+                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-gray-200 pt-5 mb-5">
-                <div class="text-center">
-                  <div class="text-4xl font-black text-[#0F3D3E]">$500</div>
-                  <div class="text-gray-500 text-sm">TOTAL FEE</div>
-                </div>
-              </div>
-              <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-[#0F3D3E] to-[#1A5F5F] text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
+              <div class="text-center text-gray-500 text-xs mb-4">Total Fee</div>
+              <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
             </div>
           </div>
 
           <!-- Animal Law & Welfare -->
-          <div class="program-card card-hover group">
-            <div class="relative h-56 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-amber-600 to-orange-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-paw text-7xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
-              </div>
-            </div>
+          <div class="bg-white rounded-3xl overflow-hidden card-hover group relative shadow-xl">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500"></div>
             <div class="p-8">
-              <h3 class="text-xl font-bold text-[#0F3D3E] mb-3">Animal Law & Welfare</h3>
-              <p class="text-gray-600 text-sm mb-5">Specialized training in animal welfare laws and advocacy strategies.</p>
-              <div class="space-y-3 text-sm text-gray-500 mb-6">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2 text-[#0F3D3E]"></i>Duration:</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">DIPLOMA</span>
+                <span class="text-4xl font-black text-[#0F3D3E]">$500</span>
+              </div>
+              <h3 class="text-2xl font-bold text-[#0F3D3E] mb-3">Animal Law & Welfare</h3>
+              <p class="text-gray-600 text-sm mb-6 leading-relaxed">Specialized training in animal welfare laws and advocacy strategies.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
                   <span class="font-bold text-[#0F3D3E]">12 Months</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2 text-[#0F3D3E]"></i>Exam Board:</span>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Exam Board</span>
                   <span class="font-bold text-[#0F3D3E]">HEXCO – ND</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2 text-[#0F3D3E]"></i>Intakes:</span>
-                  <span class="flex space-x-2">
-                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-xs font-bold">AUG</span>
+                <div class="flex items-center justify-between text-gray-500">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
+                  <span class="flex space-x-1">
+                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
+                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-gray-200 pt-5 mb-5">
-                <div class="text-center">
-                  <div class="text-4xl font-black text-[#0F3D3E]">$500</div>
-                  <div class="text-gray-500 text-sm">PER SEMESTER</div>
-                </div>
-              </div>
-              <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-[#D4A84B] to-[#C49A40] text-[#0F3D3E] font-bold text-center rounded-xl hover:shadow-lg transition-all">
+              <div class="text-center text-gray-500 text-xs mb-4">Per Semester</div>
+              <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
             </div>
           </div>
 
           <!-- Environmental Law & Climate -->
-          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group">
-            <div class="relative h-48 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-cloud-sun text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group relative">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500"></div>
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-blue-500/30 text-blue-200 text-xs font-bold rounded-full">CERTIFICATE</span>
+                <span class="text-4xl font-black text-white">$500</span>
               </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-2">Environmental Law & Climate Change</h3>
-              <p class="text-teal-200 text-sm mb-4">Understanding climate change laws and environmental regulations.</p>
-              <div class="space-y-2 text-sm text-teal-300 mb-4">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2"></i>Duration:</span>
-                  <span class="font-bold">3 Months</span>
+              <h3 class="text-2xl font-bold text-white mb-3">Environmental Law & Climate Change</h3>
+              <p class="text-teal-200 text-sm mb-6 leading-relaxed">Understanding climate change laws and environmental regulations.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
+                  <span class="font-bold text-white">3 Months</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2"></i>Exam Board:</span>
-                  <span class="font-bold">HEXCO-PCC</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Exam Board</span>
+                  <span class="font-bold text-white">HEXCO-PCC</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2"></i>Intakes:</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
                   <span class="flex space-x-1">
-                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
+                    <span class="bg-blue-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">MAR</span>
+                    <span class="bg-blue-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">OCT</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-teal-600 pt-4 mb-4">
-                <div class="text-center">
-                  <div class="text-3xl font-bold text-white">$500</div>
-                  <div class="text-teal-300 text-sm">TOTAL FEE</div>
-                </div>
-              </div>
-              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-center rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all">
-                REGISTER NOW
-              </a>
-            </div>
-          </div>
-
-          <!-- ESG Program -->
-          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group">
-            <div class="relative h-48 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-chart-line text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-2">ESG</h3>
-              <p class="text-teal-200 text-sm mb-4">Environmental, Social, and Governance principles for professionals.</p>
-              <div class="space-y-2 text-sm text-teal-300 mb-4">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2"></i>Duration:</span>
-                  <span class="font-bold">4 Weeks</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2"></i>Certificate:</span>
-                  <span class="font-bold">NELC Certificate</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2"></i>Intakes:</span>
-                  <span class="flex space-x-1">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
-                  </span>
-                </div>
-              </div>
-              <div class="border-t border-teal-600 pt-4 mb-4">
-                <div class="text-center">
-                  <div class="text-3xl font-bold text-white">$400</div>
-                  <div class="text-teal-300 text-sm">TOTAL FEE</div>
-                </div>
-              </div>
-              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-center rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all">
+              <div class="text-center text-teal-300 text-xs mb-4">Total Fee</div>
+              <a href="/pages/Registration.html" class="block w-full py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
             </div>
           </div>
 
           <!-- Tourism Governance -->
-          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group">
-            <div class="relative h-48 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-orange-600 to-red-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-landmark text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group relative">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500"></div>
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-orange-500/30 text-orange-200 text-xs font-bold rounded-full">SHORT COURSE</span>
+                <span class="text-4xl font-black text-white">$200</span>
               </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-2">Tourism Governance & Compliance</h3>
-              <p class="text-teal-200 text-sm mb-4">Tourism governance and compliance for professionals.</p>
-              <div class="space-y-2 text-sm text-teal-300 mb-4">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2"></i>Duration:</span>
-                  <span class="font-bold">4 Weeks</span>
+              <h3 class="text-2xl font-bold text-white mb-3">Tourism Governance & Compliance</h3>
+              <p class="text-teal-200 text-sm mb-6 leading-relaxed">Tourism governance and compliance for professionals.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
+                  <span class="font-bold text-white">4 Weeks</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2"></i>Certificate:</span>
-                  <span class="font-bold">NELC Certificate</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Certificate</span>
+                  <span class="font-bold text-white">NELC</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2"></i>Intakes:</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
                   <span class="flex space-x-1">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">MAR</span>
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">OCT</span>
+                    <span class="bg-orange-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">MAR</span>
+                    <span class="bg-orange-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">OCT</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-teal-600 pt-4 mb-4">
-                <div class="text-center">
-                  <div class="text-3xl font-bold text-white">$200</div>
-                  <div class="text-teal-300 text-sm">TOTAL FEE</div>
-                </div>
-              </div>
-              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-center rounded-xl hover:from-orange-600 hover:to-red-600 transition-all">
+              <div class="text-center text-teal-300 text-xs mb-4">Total Fee</div>
+              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
             </div>
           </div>
 
           <!-- Wildlife Law Enforcement -->
-          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group">
-            <div class="relative h-48 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-rose-700"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i class="fas fa-shield-alt text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+          <div class="glass-card-dark rounded-3xl overflow-hidden card-hover group relative">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-500 via-rose-500 to-red-500"></div>
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-block px-3 py-1 bg-red-500/30 text-red-200 text-xs font-bold rounded-full">SHORT COURSE</span>
+                <span class="text-4xl font-black text-white">$150</span>
               </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-2">Wildlife Law Enforcement</h3>
-              <p class="text-teal-200 text-sm mb-4">Training for effective wildlife law enforcement and protection.</p>
-              <div class="space-y-2 text-sm text-teal-300 mb-4">
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-clock mr-2"></i>Duration:</span>
-                  <span class="font-bold">4 Weeks</span>
+              <h3 class="text-2xl font-bold text-white mb-3">Wildlife Law Enforcement</h3>
+              <p class="text-teal-200 text-sm mb-6 leading-relaxed">Training for effective wildlife law enforcement and protection.</p>
+              <div class="space-y-3 text-sm mb-6">
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Duration</span>
+                  <span class="font-bold text-white">4 Weeks</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-certificate mr-2"></i>Certificate:</span>
-                  <span class="font-bold">NELC Certificate</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Certificate</span>
+                  <span class="font-bold text-white">NELC</span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span><i class="fas fa-calendar mr-2"></i>Intakes:</span>
+                <div class="flex items-center justify-between text-teal-300">
+                  <span class="uppercase tracking-wide text-xs">Intakes</span>
                   <span class="flex space-x-1">
-                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">FEB</span>
-                    <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">AUG</span>
+                    <span class="bg-red-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">FEB</span>
+                    <span class="bg-red-500/40 text-white px-2 py-0.5 rounded text-xs font-bold">AUG</span>
                   </span>
                 </div>
               </div>
-              <div class="border-t border-teal-600 pt-4 mb-4">
-                <div class="text-center">
-                  <div class="text-3xl font-bold text-white">$150</div>
-                  <div class="text-teal-300 text-sm">TOTAL FEE</div>
-                </div>
-              </div>
-              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-3 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold text-center rounded-xl hover:from-red-600 hover:to-rose-600 transition-all">
+              <div class="text-center text-teal-300 text-xs mb-4">Total Fee</div>
+              <a href="mailto:info.nelcentre@gmail.com" class="block w-full py-4 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold text-center rounded-xl hover:shadow-lg transition-all">
                 REGISTER NOW
               </a>
             </div>
