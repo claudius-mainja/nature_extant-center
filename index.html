@@ -486,7 +486,7 @@
     </style>
   </head>
 
-  <body class="font-sans antialiased" x-data="{ showPopup: true }" x-init="setTimeout(() => { showPopup = true }, 500)" x-cloak>
+  <body class="font-sans antialiased" x-data="{ showPopup: true, mobileMenu: false, scrolled: false }" x-init="setTimeout(() => { showPopup = true }, 500); window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" x-cloak>
     
     <!-- Graduation Popup Modal -->
     <div x-show="showPopup" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" style="display: none;">
@@ -1171,7 +1171,7 @@
               <img src="/assets/images/students/Phonos Nyakudya.png" alt="Student" class="w-16 h-16 rounded-full object-cover border-2 border-[#D4A84B]">
               <div class="ml-4">
                 <h4 class="font-bold text-gray-900">Phonos Nyakudya</h4>
-                <p class="text-[#D4A84B] text-sm">SOFA Legal Officer</p>
+                <p class="text-[#D4A84B] text-sm">Legal Officer</p>
               </div>
             </div>
             <p class="text-gray-600 italic">"It has motivated me to pursue animal law with ardent zeal. The curriculum package is rich in legal education, equipping one with knowledge and skills enough to advocate for animal welfare and conservation."</p>
