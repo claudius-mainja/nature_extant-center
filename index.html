@@ -486,42 +486,9 @@
     </style>
   </head>
 
-  <body class="font-sans antialiased" x-data="{ showPopup: true, mobileMenu: false, scrolled: false }" x-init="setTimeout(() => { showPopup = true }, 500); window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" x-cloak>
+  <body class="font-sans antialiased" x-data="{ mobileMenu: false, scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" x-cloak>
     
-    <!-- Graduation Popup Modal -->
-    <div x-show="showPopup" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" style="display: none;">
-      <!-- Backdrop -->
-      <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="showPopup = false"></div>
-      
-      <!-- Modal Content -->
-      <div x-show="showPopup" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-auto">
-        <!-- Close Button -->
-        <button @click="showPopup = false" class="absolute top-4 right-4 z-10 w-10 h-10 bg-[#0F3D3E] text-white rounded-full flex items-center justify-center hover:bg-[#D4A84B] hover:text-[#0F3D3E] transition-all">
-          <i class="fas fa-times"></i>
-        </button>
-        
-        <!-- Header -->
-        <div class="bg-gradient-to-r from-[#0F3D3E] to-[#1A5F5F] px-8 py-6 text-center rounded-t-3xl">
-          <h2 class="text-2xl lg:text-3xl font-bold text-white">Graduation Ceremony 2026</h2>
-          <p class="text-white/80 mt-2">You're Invited!</p>
-        </div>
-        
-        <!-- PNG Image -->
-        <div class="p-6 bg-gray-50">
-          <img src="/assets/images/Invitation Card.png" alt="Graduation Invitation" class="w-full h-auto rounded-2xl shadow-lg">
-        </div>
-        
-        <!-- Footer Actions -->
-        <div class="px-8 py-6 bg-white flex flex-col sm:flex-row gap-4 justify-center rounded-b-3xl">
-          <a href="/assets/images/Invitation Card.png" download class="inline-flex items-center justify-center px-8 py-3 bg-[#D4A84B] text-[#0F3D3E] font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all">
-            <i class="fas fa-download mr-2"></i>Download Invitation
-          </a>
-          <a href="/pages/Registration.html" class="inline-flex items-center justify-center px-8 py-3 bg-[#0F3D3E] text-white font-bold rounded-full hover:bg-[#1A5F5F] transition-all">
-            <i class="fas fa-graduation-cap mr-2"></i>Register Now
-          </a>
-        </div>
-      </div>
-    </div>
+
     <style>[x-cloak] { display: none !important; }</style>
     
     <!-- Navigation -->
@@ -663,13 +630,13 @@
 
             </div>
 
-            <!-- Hero Visual -->
-            <div class="relative hidden lg:block">
-              <div class="relative">
-                <div class="glass-card rounded-3xl p-2 transform rotate-1 hover:rotate-0 transition-transform duration-700">
-                  <img src="/assets/images/Environmetal-education.png" alt="Environmental Education" 
-                       class="rounded-2xl w-full h-[450px] object-cover shadow-2xl">
-                </div>
+             <!-- Hero Visual -->
+             <div class="relative hidden lg:block">
+               <div class="relative">
+                 <div class="glass-card rounded-3xl p-2 transform rotate-1 hover:rotate-0 transition-transform duration-700">
+                   <img src="/assets/images/First Graduation/MGO_3035.jpg" alt="Graduation Ceremony" 
+                        class="rounded-2xl w-full h-[450px] object-cover shadow-2xl">
+                 </div>
                 
                 <!-- Floating Cards -->
                 <div class="absolute -left-10 top-16 glass-card rounded-2xl p-5 floating" style="animation-delay: -1s;">
@@ -720,78 +687,125 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section-padding bg-[#F8F6F1] bg-texture">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-          <div class="relative">
-            <div class="grid grid-cols-2 gap-6">
-              <div class="space-y-6">
-                <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                  <img src="/assets/images/aboutnature.png" alt="Nature" class="w-full h-56 object-cover">
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                  <img src="/assets/images/Wildlife Law Enforcement.png" alt="Wildlife" class="w-full h-44 object-cover">
-                </div>
-              </div>
-              <div class="space-y-6 pt-10">
-                <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                  <img src="/assets/images/Wildlife Law Advocacy.png" alt="Law" class="w-full h-44 object-cover">
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                  <img src="/assets/images/treaties.png" alt="Treaties" class="w-full h-56 object-cover">
-                </div>
-              </div>
-            </div>
-            
-
-          </div>
-          
-          <div>
-            <span class="inline-block px-5 py-2 bg-[#0F3D3E]/10 text-[#0F3D3E] rounded-full text-sm font-bold tracking-wider mb-6">WHO WE ARE</span>
-            <h2 class="text-4xl lg:text-5xl font-black text-[#0F3D3E] mb-8 leading-tight">
-              Pioneering <span class="gold-text">Environmental</span> Education & Animal Law
-            </h2>
-            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-              We are a distinguished Environmental Learning Centre dedicated to promoting environmental awareness, education, and sustainable practices. We serve schools, professionals, and communities in fragile settings to address critical environmental challenges across Africa.
-            </p>
-            <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-              Through rigorous professional training programs and hands-on activities, we empower individuals with the knowledge and skills needed to protect our environment and advocate for animal welfare.
-            </p>
-            
-            <!-- SDG Goals -->
-            <div class="grid grid-cols-3 gap-5 mb-10">
-              <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-[#0F3D3E] to-[#1A5F5F] flex items-center justify-center">
-                  <i class="fas fa-graduation-cap text-white text-xl"></i>
-                </div>
-                <p class="font-bold text-[#0F3D3E]">SDG 4</p>
-                <p class="text-xs text-gray-500">Quality Education</p>
-              </div>
-              <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                  <i class="fas fa-tree text-white text-xl"></i>
-                </div>
-                <p class="font-bold text-[#0F3D3E]">SDG 15</p>
-                <p class="text-xs text-gray-500">Life on Land</p>
-              </div>
-              <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
-                  <i class="fas fa-globe-americas text-white text-xl"></i>
-                </div>
-                <p class="font-bold text-[#0F3D3E]">SDG 13</p>
-                <p class="text-xs text-gray-500">Climate Action</p>
-              </div>
-            </div>
-            
-            <a href="/pages/About.html" class="inline-flex items-center text-[#0F3D3E] font-bold hover:text-[#D4A84B] transition-colors group">
-              Learn More About Us
-              <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-2 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+     <!-- About Section -->
+     <section class="section-padding bg-[#F8F6F1] bg-texture">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="grid lg:grid-cols-2 gap-20 items-center">
+           <div class="relative">
+             <div class="grid grid-cols-2 gap-6">
+               <div class="space-y-6">
+                 <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                   <img src="/assets/images/aboutnature.png" alt="Nature" class="w-full h-56 object-cover">
+                 </div>
+                 <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                   <img src="/assets/images/Wildlife Law Enforcement.png" alt="Wildlife" class="w-full h-44 object-cover">
+                 </div>
+               </div>
+               <div class="space-y-6 pt-10">
+                 <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                   <img src="/assets/images/Wildlife Law Advocacy.png" alt="Law" class="w-full h-44 object-cover">
+                 </div>
+                 <div class="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                   <img src="/assets/images/treaties.png" alt="Treaties" class="w-full h-56 object-cover">
+                 </div>
+               </div>
+             </div>
+           </div>
+           
+           <div>
+             <span class="inline-block px-5 py-2 bg-[#0F3D3E]/10 text-[#0F3D3E] rounded-full text-sm font-bold tracking-wider mb-6">WHO WE ARE</span>
+             <h2 class="text-4xl lg:text-5xl font-black text-[#0F3D3E] mb-8 leading-tight">
+               Pioneering <span class="gold-text">Environmental</span> Education & Animal Law
+             </h2>
+             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+               We are a distinguished Environmental Learning Centre dedicated to promoting environmental awareness, education, and sustainable practices. We serve schools, professionals, and communities in fragile settings to address critical environmental challenges across Africa.
+             </p>
+             <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+               Through rigorous professional training programs and hands-on activities, we empower individuals with the knowledge and skills needed to protect our environment and advocate for animal welfare.
+             </p>
+             
+             <!-- SDG Goals -->
+             <div class="grid grid-cols-3 gap-5 mb-10">
+               <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
+                 <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-[#0F3D3E] to-[#1A5F5F] flex items-center justify-center">
+                   <i class="fas fa-graduation-cap text-white text-xl"></i>
+                 </div>
+                 <p class="font-bold text-[#0F3D3E]">SDG 4</p>
+                 <p class="text-xs text-gray-500">Quality Education</p>
+               </div>
+               <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
+                 <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                   <i class="fas fa-tree text-white text-xl"></i>
+                 </div>
+                 <p class="font-bold text-[#0F3D3E]">SDG 15</p>
+                 <p class="text-xs text-gray-500">Life on Land</p>
+               </div>
+               <div class="bg-white rounded-2xl p-5 text-center shadow-lg hover:shadow-xl transition-shadow">
+                 <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                   <i class="fas fa-globe-americas text-white text-xl"></i>
+                 </div>
+                 <p class="font-bold text-[#0F3D3E]">SDG 13</p>
+                 <p class="text-xs text-gray-500">Climate Action</p>
+               </div>
+             </div>
+             
+             <a href="/pages/About.html" class="inline-flex items-center text-[#0F3D3E] font-bold hover:text-[#D4A84B] transition-colors group">
+               Learn More About Us
+               <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-2 transition-transform"></i>
+             </a>
+           </div>
+         </div>
+       </div>
+     </section>
+     
+     <!-- Graduation Video Section -->
+     <section class="section-padding">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-center mb-12">
+           <span class="inline-block px-5 py-2 bg-[#0F3D3E]/10 text-[#0F3D3E] rounded-full text-sm font-bold tracking-wider mb-6">OUR FIRST GRADUATION</span>
+           <h2 class="text-4xl lg:text-5xl font-black text-[#0F3D3E] mb-6">Celebrating Our Milestone</h2>
+           <p class="text-xl text-white/70 max-w-2xl mx-auto text-[#0F3D3E]">
+             Witness the joy and accomplishment of our inaugural graduating class
+           </p>
+         </div>
+         <div class="rounded-2xl overflow-hidden shadow-2xl hover:shadow-xl transition-shadow duration-500">
+           <video width="100%" controls class="w-full h-auto">
+             <source src="/assets/images/First Graduation/video/Nature Extand Grad 3.mp4" type="video/mp4">
+             Your browser does not support the video tag.
+           </video>
+         </div>
+       </div>
+     </section>
+     
+     <!-- Graduation Photos Section -->
+     <section class="section-padding bg-[#F8F6F1]">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-center mb-16">
+           <span class="inline-block px-5 py-2 bg-[#0F3D3E]/10 text-[#0F3D3E] rounded-full text-sm font-bold tracking-wider mb-6">THANK YOU</span>
+           <h2 class="text-4xl lg:text-5xl font-black text-[#0F3D3E] mb-6">Graduating Class of 2026</h2>
+           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+             Celebrating the achievements of our first graduating class
+           </p>
+         </div>
+         
+         <!-- Image Carousel -->
+         <div class="relative">
+           <div class="overflow-hidden">
+             <div class="transition-transform duration-700 ease-in-out" id="graduationCarousel">
+               <!-- Images will be populated by JavaScript -->
+             </div>
+           </div>
+           
+           <!-- Navigation buttons -->
+           <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 hover:bg-white/90 transition-all z-10">
+             <i class="fas fa-chevron-left text-[#0F3D3E] text-xl"></i>
+           </button>
+           <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 hover:bg-white/90 transition-all z-10">
+             <i class="fas fa-chevron-right text-[#0F3D3E] text-xl"></i>
+           </button>
+         </div>
+       </div>
+     </section>
 
     <!-- Programs Section with Full Details -->
     <section class="section-padding hero-gradient relative overflow-hidden">
@@ -1312,8 +1326,122 @@
       </div>
     </footer>
 
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
-    </script>
-  </body>
+     <script>
+       gsap.registerPlugin(ScrollTrigger);
+       
+       // Graduation Carousel
+       document.addEventListener('DOMContentLoaded', function() {
+           const carousel = document.getElementById('graduationCarousel');
+           const prevBtn = document.getElementById('prevBtn');
+           const nextBtn = document.getElementById('nextBtn');
+           
+           // Graduation images
+           const graduationImages = [
+               '/assets/images/First Graduation/MGO_2786.jpg',
+               '/assets/images/First Graduation/MGO_2788.jpg',
+               '/assets/images/First Graduation/MGO_2789.jpg',
+               '/assets/images/First Graduation/MGO_2813.jpg',
+               '/assets/images/First Graduation/MGO_2815.jpg',
+               '/assets/images/First Graduation/MGO_2817.jpg',
+               '/assets/images/First Graduation/MGO_2841.jpg',
+               '/assets/images/First Graduation/MGO_2845.jpg',
+               '/assets/images/First Graduation/MGO_2846.jpg',
+               '/assets/images/First Graduation/MGO_2859.jpg',
+               '/assets/images/First Graduation/MGO_2862.jpg',
+               '/assets/images/First Graduation/MGO_2863.jpg',
+               '/assets/images/First Graduation/MGO_2867.jpg',
+               '/assets/images/First Graduation/MGO_2868.jpg',
+               '/assets/images/First Graduation/MGO_2881.jpg',
+               '/assets/images/First Graduation/MGO_2882.jpg',
+               '/assets/images/First Graduation/MGO_2886.jpg'
+           ];
+           
+           let currentIndex = 0;
+           
+           function loadImages() {
+               // Clear current images
+               carousel.innerHTML = '';
+               
+               // Create image elements
+               graduationImages.forEach((src, index) => {
+                   const imgDiv = document.createElement('div');
+                   imgDiv.className = 'flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-2';
+                   
+                   const img = document.createElement('img');
+                   img.src = src;
+                   img.alt = `Graduation Photo ${index + 1}`;
+                   img.className = 'w-full h-64 object-cover rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105';
+                   
+                   imgDiv.appendChild(img);
+                   carousel.appendChild(imgDiv);
+               });
+               
+               // Set initial position
+               updateCarouselPosition();
+           }
+           
+           function updateCarouselPosition() {
+               const translateX = -currentIndex * 100;
+               carousel.style.transform = `translateX(${translateX}%)`;
+           }
+           
+           prevBtn.addEventListener('click', function() {
+               currentIndex = (currentIndex - 1 + graduationImages.length) % graduationImages.length;
+               updateCarouselPosition();
+           });
+           
+           nextBtn.addEventListener('click', function() {
+               currentIndex = (currentIndex + 1) % graduationImages.length;
+               updateCarouselPosition();
+           });
+           
+           // Auto advance every 5 seconds
+           setInterval(function() {
+               currentIndex = (currentIndex + 1) % graduationImages.length;
+               updateCarouselPosition();
+           }, 5000);
+           
+           // Load images initially
+           loadImages();
+           
+           // Update on window resize
+           window.addEventListener('resize', loadImages);
+       });
+       
+       // Update gallery to include graduation images
+       document.addEventListener('DOMContentLoaded', function() {
+           // Update landing page gallery
+           const landingGalleryItems = [
+               '/assets/images/gallery-01.png',
+               '/assets/images/gallery-02.png',
+               '/assets/images/gallery-03.png',
+               '/assets/images/gallery-04.png',
+               '/assets/images/gallery-05.png',
+               '/assets/images/First Graduation/MGO_2786.jpg',
+               '/assets/images/First Graduation/MGO_2813.jpg',
+               '/assets/images/First Graduation/MGO_2845.jpg',
+               '/assets/images/First Graduation/MGO_2863.jpg'
+           ];
+           
+           const landingGallery = document.querySelector('.grid.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-4.gap-4');
+           if (landingGallery) {
+               landingGallery.innerHTML = '';
+               landingGalleryItems.forEach(src => {
+                   const div = document.createElement('div');
+                   div.className = 'group relative overflow-hidden rounded-xl shadow-lg';
+                   
+                   const img = document.createElement('img');
+                   img.src = src;
+                   img.alt = 'Gallery Image';
+                   img.className = 'w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110';
+                   
+                   div.appendChild(img);
+                   landingGallery.appendChild(div);
+               });
+           }
+           
+           // Update gallery page images (we'll need to modify the gallery page separately)
+       });
+     </script>
+   </body>
 </html>
