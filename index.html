@@ -387,31 +387,7 @@
        .card-hover { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
        .card-hover:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(15, 61, 62, 0.25); }
        
-       /* 3D Scroll Effect */
-       .parallax-section {
-         perspective: 1000px;
-         transform-style: preserve-3d;
-       }
-       .parallax-content {
-         transform: translateZ(0);
-         will-change: transform;
-         transition: transform 0.1s ease-out;
-       }
-       .parallax-bg {
-         position: absolute;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         z-index: -1;
-         transform: translateZ(-100px) scale(1.5);
-         will-change: transform;
-       }
-       .scroll-3d-element {
-         transition: transform 0.3s ease-out;
-       }
-      
-      .nav-link { position: relative; }
+       .nav-link { position: relative; }
       .nav-link::after {
         content: '';
         position: absolute;
@@ -1462,45 +1438,9 @@
                });
            }
            
-            // Update gallery page images (we'll need to modify the gallery page separately)
+             // Update gallery page images (we'll need to modify the gallery page separately)
         });
-        
-        // 3D Scroll Effect
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            
-            window.addEventListener('scroll', function() {
-                const scrollY = window.pageYOffset;
-                
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    const sectionTop = rect.top + scrollY;
-                    const relativeScroll = scrollY - sectionTop;
-                    const viewportHeight = window.innerHeight;
-                    
-                    // Calculate 3D transform based on scroll position
-                    const depth = (scrollY - sectionTop) * 0.05;
-                    const rotateX = (rect.top / viewportHeight - 0.5) * 5;
-                    const rotateY = (rect.left / window.innerWidth - 0.5) * 3;
-                    
-                    // Apply 3D transform to section
-                    section.style.transform = `perspective(1000px) rotateX(${rotateX * 0.3}deg) translateY(${depth * 0.5}px)`;
-                    section.style.transition = 'transform 0.1s ease-out';
-                    
-                    // Add parallax effect to background elements
-                    const bgElements = section.querySelectorAll('.absolute');
-                    bgElements.forEach((el, i) => {
-                        const speed = 0.05 + (i * 0.02);
-                        const yPos = relativeScroll * speed;
-                        const xPos = (rect.left / window.innerWidth - 0.5) * 10;
-                        el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-                    });
-                });
-            });
-            
-            // Initial call
-            window.dispatchEvent(new Event('scroll'));
-        });
+
       </script>
    </body>
 </html>
