@@ -1,0 +1,14 @@
+# Large video files
+assets/images/First Graduation/video/*.mp4
+assets/videos/*.mp4
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
