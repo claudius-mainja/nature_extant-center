@@ -790,8 +790,8 @@
          
           <!-- Image Carousel -->
           <div class="relative">
-            <div class="overflow-hidden">
-              <div class="flex transition-transform duration-700 ease-in-out" id="graduationCarousel">
+            <div class="overflow-hidden rounded-2xl">
+              <div class="flex transition-transform duration-1000 ease-in-out" id="graduationCarousel">
                 <!-- Images will be populated by JavaScript -->
               </div>
             </div>
@@ -1357,56 +1357,50 @@
            ];
            
            let currentIndex = 0;
-           
-           function loadImages() {
-               // Clear current images
-               carousel.innerHTML = '';
-               
-                // Create image elements
-                graduationImages.forEach((src, index) => {
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'flex-shrink-0 w-[100vw] max-w-full shrink-0 p-4';
-                    
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = `Graduation Photo ${index + 1}`;
-                    img.className = 'w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform duration-500 hover:scale-105';
-                    
-                    imgDiv.appendChild(img);
-                    carousel.appendChild(imgDiv);
-                });
-               
-               // Set initial position
-               updateCarouselPosition();
-           }
-           
-           function updateCarouselPosition() {
-               const translateX = -currentIndex * 100;
-               carousel.style.transform = `translateX(${translateX}%)`;
-           }
-           
-           prevBtn.addEventListener('click', function() {
-               currentIndex = (currentIndex - 1 + graduationImages.length) % graduationImages.length;
-               updateCarouselPosition();
-           });
-           
-           nextBtn.addEventListener('click', function() {
-               currentIndex = (currentIndex + 1) % graduationImages.length;
-               updateCarouselPosition();
-           });
-           
-           // Auto advance every 5 seconds
-           setInterval(function() {
-               currentIndex = (currentIndex + 1) % graduationImages.length;
-               updateCarouselPosition();
-           }, 5000);
-           
-           // Load images initially
-           loadImages();
-           
-           // Update on window resize
-           window.addEventListener('resize', loadImages);
-       });
+            
+            function loadImages() {
+                // Clear current images
+                carousel.innerHTML = '';
+                
+                 // Create image elements - 3 images per view
+                 graduationImages.forEach((src, index) => {
+                     const imgDiv = document.createElement('div');
+                     imgDiv.className = 'flex-shrink-0 w-[33.333%] p-2';
+                     
+                     const img = document.createElement('img');
+                     img.src = src;
+                     img.alt = `Graduation Photo ${index + 1}`;
+                     img.className = 'w-full h-72 object-cover rounded-xl shadow-lg transform transition-all duration-500 hover:scale-105';
+                     
+                     imgDiv.appendChild(img);
+                     carousel.appendChild(imgDiv);
+                 });
+                
+                // Set initial position
+                updateCarouselPosition();
+            }
+            
+            function updateCarouselPosition() {
+                const translateX = -currentIndex * (100 / 3);
+                carousel.style.transform = `translateX(${translateX}%)`;
+            }
+            
+            // Hide manual navigation buttons since it's auto-animating
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            
+            // Auto advance every 3 seconds - show next 3 images
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % Math.ceil(graduationImages.length / 3);
+                updateCarouselPosition();
+            }, 3000);
+            
+            // Load images initially
+            loadImages();
+            
+            // Update on window resize
+            window.addEventListener('resize', loadImages);
+        });
        
        // Update gallery to include graduation images
        document.addEventListener('DOMContentLoaded', function() {
