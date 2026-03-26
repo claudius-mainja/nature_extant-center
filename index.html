@@ -817,8 +817,8 @@
          
           <!-- Image Carousel -->
           <div class="relative">
-            <div class="overflow-hidden rounded-2xl">
-              <div class="flex transition-transform duration-1000 ease-in-out" id="graduationCarousel">
+            <div class="overflow-hidden rounded-2xl bg-gray-100">
+              <div class="flex gap-4 transition-transform duration-1000 ease-in-out overflow-x-auto" id="graduationCarousel" style="display: flex !important; flex-wrap: nowrap !important; visibility: visible !important;">
                 <!-- Images will be populated by JavaScript -->
               </div>
             </div>
@@ -1362,52 +1362,61 @@
            const prevBtn = document.getElementById('prevBtn');
            const nextBtn = document.getElementById('nextBtn');
            
-           // Graduation images
-           const graduationImages = [
-               '/assets/images/First Graduation/MGO_2786.jpg',
-               '/assets/images/First Graduation/MGO_2788.jpg',
-               '/assets/images/First Graduation/MGO_2789.jpg',
-               '/assets/images/First Graduation/MGO_2813.jpg',
-               '/assets/images/First Graduation/MGO_2815.jpg',
-               '/assets/images/First Graduation/MGO_2817.jpg',
-               '/assets/images/First Graduation/MGO_2841.jpg',
-               '/assets/images/First Graduation/MGO_2845.jpg',
-               '/assets/images/First Graduation/MGO_2846.jpg',
-               '/assets/images/First Graduation/MGO_2859.jpg',
-               '/assets/images/First Graduation/MGO_2862.jpg',
-               '/assets/images/First Graduation/MGO_2863.jpg',
-               '/assets/images/First Graduation/MGO_2867.jpg',
-               '/assets/images/First Graduation/MGO_2868.jpg',
-               '/assets/images/First Graduation/MGO_2881.jpg',
-               '/assets/images/First Graduation/MGO_2882.jpg',
-               '/assets/images/First Graduation/MGO_2886.jpg'
-           ];
-           
-           let currentIndex = 0;
+            // Graduation images
+            const graduationImages = [
+                '/assets/images/First Graduation/MGO_2786.jpg',
+                '/assets/images/First Graduation/MGO_2788.jpg',
+                '/assets/images/First Graduation/MGO_2789.jpg',
+                '/assets/images/First Graduation/MGO_2813.jpg',
+                '/assets/images/First Graduation/MGO_2815.jpg',
+                '/assets/images/First Graduation/MGO_2817.jpg',
+                '/assets/images/First Graduation/MGO_2841.jpg',
+                '/assets/images/First Graduation/MGO_2845.jpg',
+                '/assets/images/First Graduation/MGO_2846.jpg',
+                '/assets/images/First Graduation/MGO_2859.jpg',
+                '/assets/images/First Graduation/MGO_2862.jpg',
+                '/assets/images/First Graduation/MGO_2863.jpg',
+                '/assets/images/First Graduation/MGO_2867.jpg',
+                '/assets/images/First Graduation/MGO_2868.jpg',
+                '/assets/images/First Graduation/MGO_2881.jpg',
+                '/assets/images/First Graduation/MGO_2882.jpg',
+                '/assets/images/First Graduation/MGO_2886.jpg'
+            ];
             
-            function loadImages() {
-                // Clear current images
-                carousel.innerHTML = '';
-                
-                 // Create image elements - 3 images per view
-                 graduationImages.forEach((src, index) => {
-                     const imgDiv = document.createElement('div');
-                     imgDiv.className = 'flex-shrink-0 w-[33.333%] p-2';
-                     
+            let currentIndex = 0;
+            let autoSlideInterval;
+             
+             function loadImages() {
+                 // Clear current images
+                 carousel.innerHTML = '';
+                 
+                  // Create image elements - 3 images per view
+                  graduationImages.forEach((src, index) => {
+                      const imgDiv = document.createElement('div');
+                      imgDiv.className = 'flex-shrink-0 w-[33.333%] p-2';
+                      imgDiv.style.flex = '0 0 33.333%';
+                      
                      const img = document.createElement('img');
                      img.src = src;
                      img.alt = `Graduation Photo ${index + 1}`;
-                     img.loading = 'lazy';
+                     img.loading = 'eager';
                      img.decoding = 'async';
-                     img.className = 'w-full h-72 object-cover rounded-xl shadow-lg transform transition-all duration-500 hover:scale-105';
+                     img.style.width = '100%';
+                     img.style.height = '250px';
+                     img.style.objectFit = 'cover';
+                     img.className = 'rounded-xl shadow-lg transition-all duration-500 hover:scale-105';
                      
                      imgDiv.appendChild(img);
                      carousel.appendChild(imgDiv);
                  });
                 
-                // Set initial position
-                updateCarouselPosition();
-            }
+                 // Ensure carousel is visible
+                 carousel.style.display = 'flex';
+                 carousel.style.visibility = 'visible';
+                 
+                 // Set initial position
+                 updateCarouselPosition();
+             }
             
             function updateCarouselPosition() {
                 const translateX = -currentIndex * (100 / 3);
