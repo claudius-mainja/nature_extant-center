@@ -783,22 +783,25 @@
            </p>
          </div>
          
-          <!-- Image Carousel -->
-          <div class="relative">
-            <div class="overflow-hidden rounded-2xl bg-gray-100">
-              <div class="flex gap-4 transition-transform duration-1000 ease-in-out overflow-x-auto" id="graduationCarousel" style="display: flex !important; flex-wrap: nowrap !important; visibility: visible !important;">
-                <!-- Images will be populated by JavaScript -->
-              </div>
-            </div>
-            
-            <!-- Navigation buttons -->
-            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 hover:bg-white/90 transition-all z-10">
-              <i class="fas fa-chevron-left text-[#0F3D3E] text-xl"></i>
-            </button>
-            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 hover:bg-white/90 transition-all z-10">
-              <i class="fas fa-chevron-right text-[#0F3D3E] text-xl"></i>
-            </button>
-          </div>
+           <!-- Image Carousel -->
+           <div class="relative">
+             <div class="overflow-hidden rounded-2xl bg-gray-100" id="carouselContainer">
+               <div class="flex transition-transform duration-1000 ease-in-out" id="graduationCarousel">
+                 <!-- Images will be populated by JavaScript -->
+               </div>
+             </div>
+             
+             <!-- Navigation buttons -->
+             <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-3 hover:bg-white/90 transition-all z-10 shadow-lg">
+               <i class="fas fa-chevron-left text-[#0F3D3E] text-xl"></i>
+             </button>
+             <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-3 hover:bg-white/90 transition-all z-10 shadow-lg">
+               <i class="fas fa-chevron-right text-[#0F3D3E] text-xl"></i>
+             </button>
+             
+             <!-- Carousel Indicators -->
+             <div id="carouselIndicators" class="flex justify-center gap-2 mt-6"></div>
+           </div>
        </div>
      </section>
 
@@ -1331,7 +1334,7 @@
            const nextBtn = document.getElementById('nextBtn');
            
             // Graduation images
-            const graduationImages = [
+            const allGraduationImages = [
                 '/assets/images/First Graduation/MGO_2786.jpg',
                 '/assets/images/First Graduation/MGO_2788.jpg',
                 '/assets/images/First Graduation/MGO_2789.jpg',
@@ -1352,23 +1355,39 @@
             ];
             
             let currentIndex = 0;
+            let maxScrolls = 3;
+            let scrollCount = 0;
             let autoSlideInterval;
+            let graduationImages = [];
+            
+            // Shuffle function
+            function shuffleArray(array) {
+                const shuffled = [...array];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                return shuffled;
+            }
              
              function loadImages() {
+                 // Shuffle images on each load
+                 graduationImages = shuffleArray(allGraduationImages);
+                 
                  // Clear current images
                  carousel.innerHTML = '';
                  
                   // Create image elements - 3 images per view
                   graduationImages.forEach((src, index) => {
                       const imgDiv = document.createElement('div');
-                      imgDiv.className = 'flex-shrink-0 w-[33.333%] p-2';
                       imgDiv.style.flex = '0 0 33.333%';
+                      imgDiv.style.padding = '0 0.5rem';
                       
                      const img = document.createElement('img');
                      img.src = src;
                      img.alt = `Graduation Photo ${index + 1}`;
                      img.style.width = '100%';
-                     img.style.height = '250px';
+                     img.style.height = '280px';
                      img.style.objectFit = 'cover';
                      img.className = 'rounded-xl shadow-lg transition-all duration-500 hover:scale-105';
                      
@@ -1380,30 +1399,105 @@
                  carousel.style.display = 'flex';
                  carousel.style.visibility = 'visible';
                  
+                 // Create indicators
+                 createIndicators();
+                 
                  // Set initial position
                  updateCarouselPosition();
              }
-            
-            function updateCarouselPosition() {
-                const translateX = -currentIndex * (100 / 3);
-                carousel.style.transform = `translateX(${translateX}%)`;
-            }
-            
-            // Hide manual navigation buttons since it's auto-animating
-            if (prevBtn) prevBtn.style.display = 'none';
-            if (nextBtn) nextBtn.style.display = 'none';
-            
-            // Auto advance every 3 seconds - show next 3 images
-            setInterval(function() {
-                currentIndex = (currentIndex + 1) % Math.ceil(graduationImages.length / 3);
-                updateCarouselPosition();
-            }, 3000);
-            
-            // Load images initially
-            loadImages();
-            
-            // Update on window resize
-            window.addEventListener('resize', loadImages);
+             
+             function createIndicators() {
+                 const indicators = document.getElementById('carouselIndicators');
+                 if (!indicators) return;
+                 indicators.innerHTML = '';
+                 
+                 const totalSlides = Math.ceil(graduationImages.length / 3);
+                 for (let i = 0; i < totalSlides; i++) {
+                     const dot = document.createElement('button');
+                     dot.className = 'w-3 h-3 rounded-full transition-all ' + (i === currentIndex ? 'bg-[#D4A84B] w-8' : 'bg-gray-300 hover:bg-gray-400');
+                     dot.addEventListener('click', () => {
+                         currentIndex = i;
+                         updateCarouselPosition();
+                         updateIndicators();
+                     });
+                     indicators.appendChild(dot);
+                 }
+             }
+             
+             function updateIndicators() {
+                 const indicators = document.getElementById('carouselIndicators');
+                 if (!indicators) return;
+                 
+                 const dots = indicators.querySelectorAll('button');
+                 dots.forEach((dot, i) => {
+                     if (i === currentIndex) {
+                         dot.className = 'w-8 h-3 rounded-full transition-all bg-[#D4A84B]';
+                     } else {
+                         dot.className = 'w-3 h-3 rounded-full transition-all bg-gray-300 hover:bg-gray-400';
+                     }
+                 });
+             }
+             
+             function updateCarouselPosition() {
+                 const translateX = -currentIndex * (33.333);
+                 carousel.style.transform = `translateX(${translateX}%)`;
+                 updateIndicators();
+             }
+             
+             // Previous button
+             if (prevBtn) {
+                 prevBtn.addEventListener('click', () => {
+                     const totalSlides = Math.ceil(graduationImages.length / 3);
+                     currentIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
+                     updateCarouselPosition();
+                 });
+             }
+             
+             // Next button
+             if (nextBtn) {
+                 nextBtn.addEventListener('click', () => {
+                     const totalSlides = Math.ceil(graduationImages.length / 3);
+                     if (scrollCount < maxScrolls) {
+                         currentIndex = (currentIndex + 1) % totalSlides;
+                         scrollCount++;
+                         updateCarouselPosition();
+                         
+                         // Stop after 3 scrolls
+                         if (scrollCount >= maxScrolls) {
+                             clearInterval(autoSlideInterval);
+                             // Hide navigation buttons after 3 scrolls
+                             setTimeout(() => {
+                                 if (prevBtn) prevBtn.style.opacity = '0.5';
+                                 if (nextBtn) nextBtn.style.opacity = '0.5';
+                             }, 1000);
+                         }
+                     }
+                 });
+             }
+             
+             // Auto advance every 4 seconds
+             autoSlideInterval = setInterval(function() {
+                 const totalSlides = Math.ceil(graduationImages.length / 3);
+                 if (scrollCount < maxScrolls) {
+                     currentIndex = (currentIndex + 1) % totalSlides;
+                     scrollCount++;
+                     updateCarouselPosition();
+                     
+                     if (scrollCount >= maxScrolls) {
+                         clearInterval(autoSlideInterval);
+                         setTimeout(() => {
+                             if (prevBtn) prevBtn.style.opacity = '0.5';
+                             if (nextBtn) nextBtn.style.opacity = '0.5';
+                         }, 1000);
+                     }
+                 }
+             }, 4000);
+             
+             // Load images initially
+             loadImages();
+             
+             // Update on window resize
+             window.addEventListener('resize', loadImages);
         });
        
        // Update gallery to include graduation images
